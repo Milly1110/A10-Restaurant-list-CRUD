@@ -16,6 +16,7 @@ db.on('error', () => {
 db.once('open', () => {
   console.log('mongoDB connected!')
 })
+
 //setting routes
 app.get('/', (req, res) => {
   res.send('This is restaurant page')
