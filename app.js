@@ -26,6 +26,9 @@ app.set('view engine', 'hbs')
 //setting routes for static file
 app.use(express.static('public'))
 
+//setting body-parser
+app.use(bodyParser.urlencoded({ extended: true }))
+
 //setting routes
 app.get('/', (req, res) => {
   // res.render('index')
@@ -34,6 +37,20 @@ app.get('/', (req, res) => {
     .then(rest => res.render('index', { rest }))
     .catch(error => console.log(error))
 })
+
+//setting routes for create
+app.get('/restaurants/new', (req, res) => {
+  return res.render('new')
+})
+//add data in collection
+app.post('/restaurants', (req, res) => {
+  const restName = req.body.name
+  return Restaurant.create({ restName })
+    .then(() => res.redirect('/'))
+    .catch(error => console.log(error))
+})
+//setting routes for detail
+
 
 //starts the express server and listening for connections
 app.listen(port, () => {

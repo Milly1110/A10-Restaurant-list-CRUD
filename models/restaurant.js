@@ -14,25 +14,15 @@ const restaurantSchema = new Schema({
     type: String,
     required: true
   },
-  name_en: {
-    type: String,
-    required: true
-  },
-  category: {
-    type: String
-  },
-  image: {
-    type: String
-  },
-  location: {
-    type: String
-  },
-  phone: {
-    type: String
-  },
-  rating: {
-    type: Number
-  }
+  name_en: String,
+  category: String,
+  image: String,
+  location: String,
+  phone: String,
+  google_map: String,
+  rating: Number,
+  description: String
+
 })
 
 //output Schema
