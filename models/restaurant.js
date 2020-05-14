@@ -2,14 +2,14 @@
 const mongoose = require('mongoose')
 
 //use mongoose.Schema
-const schema = mongoose.Schema
+const Schema = mongoose.Schema
 
 //define data structure
 const restaurantSchema = new Schema({
-  id: {
-    type: Number,
-    required: true
-  },
+  // id: {
+  //   type: Number,
+  //   required: true
+  // },
   name: {
     type: String,
     required: true

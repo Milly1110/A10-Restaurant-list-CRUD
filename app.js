@@ -8,7 +8,7 @@ const bodyParser = require('body-parser')
 const mongoose = require('mongoose')
 
 //setting link to mongoose
-mongoose.connect('mongodb://localhost/restaurant', { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect('mongodb://localhost/Restaurant-list', { useNewUrlParser: true, useUnifiedTopology: true })
 const db = mongoose.connection
 db.on('error', () => {
   console.log('mongoDB error!')
