@@ -11,7 +11,7 @@ db.on('error', () => {
 db.once('open', () => {
   console.log('mongodb connected!')
   for (i = 0; i < 10; i++) {
-    Restaurant.create({ name: 'name-' + i })
+    Restaurant.create({ name: 'name-' + i, name_en: 'name_en-' + i })
   }
   console.log('done')
 })
