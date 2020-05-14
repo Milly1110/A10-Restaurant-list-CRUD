@@ -21,6 +21,8 @@ db.once('open', () => {
 app.engine('hbs', exphbs({ defaultLayout: 'main', extname: '.hbs' }))
 app.set('view engine', 'hbs')
 
+//setting routes for static file
+app.use(express.static('public'))
 
 //setting routes
 app.get('/', (req, res) => {

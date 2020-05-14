@@ -13,9 +13,24 @@
   {{!-- include fontawesome CDN --}}
   <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js"
     integrity="sha256-KzZiKy0DWYsnwMF+X1DvQngQ2/FxF7MF3Ff72XcpuPs=" crossorigin="anonymous"></script>
+  {{!-- include static file --}}
+  <link rel="stylesheet" href="/stylesheets/index.css">
 </head>
 
 <body>
+  <!-- navigation -->
+  <nav class="navbar navbar-light bg-light">
+    <div class="container">
+      <a class="navbar-brand" href="/">
+        <img src="https://assets-lighthouse.s3.amazonaws.com/uploads/image/file/6227/restaurant-list-logo.png"
+          width="30" height="30" class="d-inline-block align-top" alt="我的餐廳清單">
+        我的餐廳清單
+      </a>
+    </div>
+  </nav>
+
+  <div class="banner"></div>
+
   {{{body}}}
 
   {{!-- include Bootstrap JS CDN --}}
