@@ -42,10 +42,18 @@ app.get('/', (req, res) => {
 app.get('/restaurants/new', (req, res) => {
   return res.render('new')
 })
-//add data in collection
+//create data in collection
 app.post('/restaurants', (req, res) => {
-  const restName = req.body.name
-  return Restaurant.create({ restName })
+  const name = req.body.name
+  const nameEn = req.body.name_en
+  const category = req.body.category
+  const image = req.body.image
+  const location = req.body.location
+  const phone = req.body.phone
+  const googleMap = req.body.google_map
+  const rating = req.body.rating
+  const description = req.body.description
+  return Restaurant.create({ name, nameEn, category, image, location, phone, googleMap, rating, description })
     .then(() => res.redirect('/'))
     .catch(error => console.log(error))
 })
