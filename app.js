@@ -17,9 +17,14 @@ db.once('open', () => {
   console.log('mongoDB connected!')
 })
 
+//setting template engine
+app.engine('hbs', exphbs({ defaultLayout: 'main', extname: '.hbs' }))
+app.set('view engine', 'hbs')
+
+
 //setting routes
 app.get('/', (req, res) => {
-  res.send('This is restaurant page')
+  res.render('index')
 })
 
 //starts the express server and listening for connections
