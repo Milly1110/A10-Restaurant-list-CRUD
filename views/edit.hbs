@@ -6,10 +6,6 @@
     <input type="text" name="category" placeholder="input category" style="display: block; margin: 10px;"
       value="{{rest.category}}">
 
-    {{!-- <form action="/restaurants" method="post"> --}}
-    {{!-- <input type="" name="image" accept="image/*,.jpg" style="display: block; margin: 10px;">
-    <button>upload</button> --}}
-    {{!-- </form> --}}
     <input type="text" name="image" style="display: block; margin: 10px;" src="{{rest.image}}">
 
     <input type="text" name="location" placeholder="input location" style="display: block; margin: 10px;width: 400px;"
@@ -21,7 +17,7 @@
     <input type="number" name="rating" placeholder="0~5" step="0.1" min="0" max="5" style="display: block; margin:10px;"
       value="{{rest.rating}}">
     <input type="text" name="description" placeholder="input description"
-      style="display: block; margin:10px; height: 100px;" value="{{rest.description}}">
+      style="display: block; margin:10px; height: 100px; weight: 300px; text-align: left;" value="{{rest.description}}">
     <button class="btn btn-outline-success" type="submit">存檔</button>
     <a href="/">返回餐廳清單</a>
   </form>
