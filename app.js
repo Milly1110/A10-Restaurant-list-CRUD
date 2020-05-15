@@ -113,13 +113,20 @@ app.post('/restaurants/:id/delete', (req, res) => {
 
 //Search function
 app.get('/search', (req, res) => {
-  const keyword = req.query.keyword
-  const rest = Restaurant.find()
-    (r => {
-      return r.name.toLowerCae().includes(keyword.toLocaleLowerCase()) || r.category.includes(keyword)
-    })
-  res.render('index', { rest, keyword })
+  const keyword = req.query.keyword.toLowerCase()
+  return Restaurant.find({
+    "$or": [
+      { "name": { $regex: `${keyword}`, $options: '$i' } },
+      { "category": { $regex: `${keyword}`, $options: '$i' } }
+    ]
+  }
+  )
+    .lean()
+    .then(rest => res.render('index', { rest, keyword: req.query.keyword }))
 })
+
+
+
 
 //starts the express server and listening for connections
 app.listen(port, () => {
