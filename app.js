@@ -65,6 +65,42 @@ app.get('/restaurants/:id', (req, res) => {
     .then(rest => res.render('detail', { rest }))
     .catch(error => console.log(error))
 })
+//setting routes for edit
+app.get('/restaurants/:id/edit', (req, res) => {
+  const id = req.params.id
+  return Restaurant.findById(id)
+    .lean()
+    .then(rest => res.render('edit', { rest }))
+    .catch(error => console.log(error))
+})
+//update collection documents
+app.post('/restaurants/:id/edit', (req, res) => {
+  const id = req.params.id
+  const name = req.body.name
+  const nameEn = req.body.name_en
+  const category = req.body.category
+  const image = req.body.image
+  const location = req.body.location
+  const phone = req.body.phone
+  const googleMap = req.body.google_map
+  const rating = req.body.rating
+  const description = req.body.description
+  return Restaurant.findById(id)
+    .then(rest => {
+      rest.name = name
+      rest.name_en = nameEn
+      rest.category = category
+      rest.image = image
+      rest.location = location
+      rest.phone = phone
+      rest.google_map = googleMap
+      rest.rating = rating
+      rest.description = description
+      return rest.save()
+    })
+    .then(() => res.redirect(`/restaurants/${id}`))
+    .catch(error => console.log(error))
+})
 
 //starts the express server and listening for connections
 app.listen(port, () => {
