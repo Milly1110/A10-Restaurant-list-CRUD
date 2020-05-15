@@ -9,6 +9,10 @@ const mongoose = require('mongoose')
 //include Restaurant model
 const Restaurant = require('./models/restaurant')
 
+function myFunction() {
+  alert("是否確定要刪除整筆資料")
+}
+
 //setting link to mongoose
 mongoose.connect('mongodb://localhost/Restaurant-list', { useNewUrlParser: true, useUnifiedTopology: true })
 const db = mongoose.connection

@@ -39,11 +39,18 @@
               </span>
 
             </div>
-            <div class="card-foot p-2">
+            <div class="card-foot p-2" style="text-align: right;">
               <a href="./restaurants/{{this._id}}">Detail</a>
               <a href="./restaurants/{{this._id}}/edit">Edit</a>
               <form action="./restaurants/{{this._id}}/delete" method="post" style="display: inline;">
-                <button type="submit">Delete</button>
+                <button type="submit" onclick="myFunction()">Delete</button>
+                <script>
+                  function myFunction() {
+                    alert("是否確定要刪除整筆資料")
+                  }
+                </script>
+
+
               </form>
             </div>
           </div>
