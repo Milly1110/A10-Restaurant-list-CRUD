@@ -39,6 +39,10 @@
       </p>
       <a href="/restaurants/{{rest._id}}/edit">Edit</a>
       <a href="/">返回餐廳清單</a>
+      <form action="/restaurants/{{rest._id}}/delete" method="post" style="display: inline;">
+        <button type="submit">Delete</button>
+      </form>
+
       <img class="rounded mx-auto d-block mb-4 w-100" src="{{rest.image}}" alt="{{rest.name}}"
         style="max-width: 600px;">
     </div>

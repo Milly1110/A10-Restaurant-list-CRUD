@@ -73,7 +73,7 @@ app.get('/restaurants/:id/edit', (req, res) => {
     .then(rest => res.render('edit', { rest }))
     .catch(error => console.log(error))
 })
-//update collection documents
+//update documents in collection
 app.post('/restaurants/:id/edit', (req, res) => {
   const id = req.params.id
   const name = req.body.name
@@ -100,6 +100,25 @@ app.post('/restaurants/:id/edit', (req, res) => {
     })
     .then(() => res.redirect(`/restaurants/${id}`))
     .catch(error => console.log(error))
+})
+
+//setting routes for delete
+app.post('/restaurants/:id/delete', (req, res) => {
+  const id = req.params.id
+  return Restaurant.findById(id)
+    .then(rest => rest.remove())
+    .then(() => res.redirect('/'))
+    .catch(error => console.log(error))
+})
+
+//Search function
+app.get('/search', (req, res) => {
+  const keyword = req.query.keyword
+  const rest = Restaurant.find()
+    (r => {
+      return r.name.toLowerCae().includes(keyword.toLocaleLowerCase()) || r.category.includes(keyword)
+    })
+  res.render('index', { rest, keyword })
 })
 
 //starts the express server and listening for connections
