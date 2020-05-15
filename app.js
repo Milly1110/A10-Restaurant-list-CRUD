@@ -58,7 +58,13 @@ app.post('/restaurants', (req, res) => {
     .catch(error => console.log(error))
 })
 //setting routes for detail
-
+app.get('/restaurants/:id', (req, res) => {
+  const id = req.params.id
+  return Restaurant.findById(id)
+    .lean()
+    .then(rest => res.render('detail', { rest }))
+    .catch(error => console.log(error))
+})
 
 //starts the express server and listening for connections
 app.listen(port, () => {

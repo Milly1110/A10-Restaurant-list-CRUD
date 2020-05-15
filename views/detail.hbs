@@ -1,0 +1,45 @@
+<h1 class="mb-1 restaurant-show-title">{{rest.name}}</h1>
+<div class="container">
+  <div class="row">
+    <div class="col-12 col-md-10 mx-auto">
+
+      <p class="mb-1">
+        <span class="text-secondary">
+          <i class="fas fa-utensils pr-2 fa-2x"></i>
+          類別：
+        </span>
+        {{rest.category}}
+      </p>
+
+      <p class="mb-1">
+        <span class="text-secondary">
+          <i class="fas fa-map-marker-alt pr-2 fa-2x"></i>
+          地址：
+        </span>
+        {{rest.location}}
+        {{!-- 依助教指導修改google map功能 --}}
+        <a href="https://www.google.com/maps/place/{{rest.location}}" class="text-secondary" target="_blank">
+          <i class="fas fa-location-arrow pr-2 fa-2x"></i>
+        </a>
+      </p>
+
+      <p class="mb-1">
+        <span class="text-secondary">
+          <i class="fas fa-mobile-alt pr-2 fa-2x"></i>
+          電話：
+        </span>
+        {{!-- 依助教指導新增電話撥打功能 --}}
+        <a href="tel:+886-{{rest.phone}}">
+          {{rest.phone}}
+        </a>
+      </p>
+
+      <p class="mb-5">
+        {{rest.description}}
+      </p>
+      <a href="/">返回餐廳清單</a>
+      <img class="rounded mx-auto d-block mb-4 w-100" src="{{rest.image}}" alt="{{rest.name}}"
+        style="max-width: 600px;">
+    </div>
+  </div>
+</div>
