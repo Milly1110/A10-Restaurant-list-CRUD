@@ -40,7 +40,13 @@
       <a href="/restaurants/{{rest._id}}/edit">Edit</a>
       <a href="/">返回餐廳清單</a>
       <form action="/restaurants/{{rest._id}}/delete" method="post" style="display: inline;">
-        <button type="submit">Delete</button>
+        <button type="submit" onclick="myFunction()">Delete</button>
+        <script>
+          function myFunction() {
+            alert("是否確定要刪除整筆資料")
+          }
+        </script>
+
       </form>
 
       <img class="rounded mx-auto d-block mb-4 w-100" src="{{rest.image}}" alt="{{rest.name}}"
