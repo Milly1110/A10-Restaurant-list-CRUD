@@ -20,7 +20,18 @@
       </div>
     </div>
     <div class="col">
-      <a href="./restaurants/new">新增餐廳</a> // 改成sort區域
+      <div class="dropdown">
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false">
+          Sort
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <a class="dropdown-item" href="/sort/name/asc">名稱 A→Z</a>
+          <a class="dropdown-item" href="/sort/name/desc">名稱 Z→A</a>
+          <a class="dropdown-item" href="/sort/category/asc">類別</a>
+          <a class="dropdown-item" href="/sort/location/asc">地區</a>
+        </div>
+      </div>
     </div>
   </div>
 
