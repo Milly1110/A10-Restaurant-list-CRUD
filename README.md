@@ -5,7 +5,7 @@ A simple web application for Restaurant information
 -type the **name** or **category** of the restaurant in search bar can find related information
 -read more information by click restaurant card
 -get googlemap by click icon near the address
-![](https://upload.cc/i1/2020/05/10/NLCesw.jpg)
+![](https://i.imgur.com/yWTGqtJ.jpg)
 
 ## installation
 1. Clone repository to local computer
