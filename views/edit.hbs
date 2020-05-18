@@ -1,5 +1,5 @@
 <div class="container">
-  <form action="/restaurants/{{rest._id}}/edit" method="post">
+  <form action="/restaurants/{{rest._id}}?_method=PUT" method="post">
     <input type="text" name="name" placeholder="餐廳中文名稱" style="display: block; margin: 10px;" value="{{rest.name}}">
     <input type="text" name="name_en" placeholder="input restaurant English name"
       style="display: block; margin: 10px; width: 250px;" value="{{rest.name_en}}">

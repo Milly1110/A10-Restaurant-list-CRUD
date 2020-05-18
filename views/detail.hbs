@@ -39,7 +39,7 @@
       </p>
       <a href="/restaurants/{{rest._id}}/edit">Edit</a>
       <a href="/">返回餐廳清單</a>
-      <form action="/restaurants/{{rest._id}}/delete" method="post" style="display: inline;">
+      <form action="/restaurants/{{rest._id}}?_method=DELETE" method="post" style="display: inline;">
         <button type="submit" onclick="myFunction()">Delete</button>
         <script>
           function myFunction() {

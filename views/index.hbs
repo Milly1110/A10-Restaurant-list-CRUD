@@ -1,26 +1,38 @@
 <!-- search bar -->
-<div class="container search-bar">
-  <div class="search-bar-outer">
-    <div class="search-bar-inner">
-      <form action="/search">
-        <h4 class="mb-2">尋找餐廳：</h4>
-        <div class="input-group">
-          <input type="text" name="keyword" class="form-control" placeholder="輸入餐廳、分類" aria-label="Restaurant Name..."
-            value="{{keyword}}" aria-describedby="search-button">
-          <div class="input-group-append">
-            <button class="btn btn-major" type="submit" id="search-button"><i class="fas fa-search"></i></button>
+<div class="container">
+  <div class="row">
+    <div class="col-8">
+      <div class="container search-bar">
+        <div class="search-bar-outer">
+          <div class="search-bar-inner">
+            <form action="/search">
+              <h4 class="mb-2">尋找餐廳：</h4>
+              <div class="input-group">
+                <input type="text" name="keyword" class="form-control" placeholder="輸入餐廳、分類"
+                  aria-label="Restaurant Name..." value="{{keyword}}" aria-describedby="search-button">
+                <div class="input-group-append">
+                  <button class="btn btn-major" type="submit" id="search-button"><i class="fas fa-search"></i></button>
+                </div>
+              </div>
+            </form>
           </div>
         </div>
-      </form>
+      </div>
+    </div>
+    <div class="col">
+      <a href="./restaurants/new">新增餐廳</a> // 改成sort區域
     </div>
   </div>
+
+
 </div>
+
 
 <!-- restaurant list -->
 <div class="container mt-5">
   <div class="row">
     <div class="col-md-10 col-12 mx-auto">
-      <a href="./restaurants/new">新增餐廳</a>
+
       <div class="card-columns">
         {{#each rest}}
         <a href="/restaurants/{{this._id}}" class="text-secondary">
@@ -42,7 +54,7 @@
             <div class="card-foot p-2" style="text-align: right;">
               <a href="./restaurants/{{this._id}}">Detail</a>
               <a href="./restaurants/{{this._id}}/edit">Edit</a>
-              <form action="./restaurants/{{this._id}}/delete" method="post" style="display: inline;">
+              <form action="./restaurants/{{this._id}}?_method=DELETE" method="post" style="display: inline;">
                 <button type="submit" onclick="myFunction()">Delete</button>
                 <script>
                   function myFunction() {

@@ -8,6 +8,10 @@ const bodyParser = require('body-parser')
 const mongoose = require('mongoose')
 //include Restaurant model
 const Restaurant = require('./models/restaurant')
+//include method-override
+const methodOverride = require('method-override')
+//include index.js
+const routes = require('./routes')
 
 //setting link to mongoose
 mongoose.connect('mongodb://localhost/Restaurant-list', { useNewUrlParser: true, useUnifiedTopology: true })
@@ -29,92 +33,17 @@ app.use(express.static('public'))
 //setting body-parser
 app.use(bodyParser.urlencoded({ extended: true }))
 
+//setting method-override
+app.use(methodOverride('_method'))
+
+//掛載總路由器
+app.use(routes)
+
 //setting routes
-app.get('/', (req, res) => {
-  // res.render('index')
-  Restaurant.find()
-    .lean()
-    .then(rest => res.render('index', { rest }))
-    .catch(error => console.log(error))
-})
+
 
 //setting routes for create
-app.get('/restaurants/new', (req, res) => {
-  return res.render('new')
-})
-//create data in collection
-app.post('/restaurants', (req, res) => {
-  // const name = req.body.name
-  // const nameEn = req.body.name_en
-  // const category = req.body.category
-  // const image = req.body.image
-  // const location = req.body.location
-  // const phone = req.body.phone
-  // const googleMap = req.body.google_map
-  // const rating = req.body.rating
-  // const description = req.body.description
-  //參考U88教案內容將以上內容修改成解構賦值的語法
-  const { name, name_en, category, image, location, phone, google_map, rating, description } = req.body
-  return Restaurant.create({ name, name_en, category, image, location, phone, google_map, rating, description })
-    .then(() => res.redirect('/'))
-    .catch(error => console.log(error))
-})
-//setting routes for detail
-app.get('/restaurants/:id', (req, res) => {
-  const id = req.params.id
-  return Restaurant.findById(id)
-    .lean()
-    .then(rest => res.render('detail', { rest }))
-    .catch(error => console.log(error))
-})
-//setting routes for edit
-app.get('/restaurants/:id/edit', (req, res) => {
-  const id = req.params.id
-  return Restaurant.findById(id)
-    .lean()
-    .then(rest => res.render('edit', { rest }))
-    .catch(error => console.log(error))
-})
-//update documents in collection
-app.post('/restaurants/:id/edit', (req, res) => {
-  const id = req.params.id
-  // const name = req.body.name
-  // const nameEn = req.body.name_en
-  // const category = req.body.category
-  // const image = req.body.image
-  // const location = req.body.location
-  // const phone = req.body.phone
-  // const googleMap = req.body.google_map
-  // const rating = req.body.rating
-  // const description = req.body.description
-  //參考U88教案內容將以上內容修改成解構賦值的語法
-  const { name, name_en, category, image, location, phone, google_map, rating, description } = req.body
-  return Restaurant.findById(id)
-    .then(rest => {
-      rest.name = name
-      rest.name_en = name_en
-      rest.category = category
-      rest.image = image
-      rest.location = location
-      rest.phone = phone
-      rest.google_map = google_map
-      rest.rating = rating
-      rest.description = description
 
-      return rest.save()
-    })
-    .then(() => res.redirect(`/restaurants/${id}`))
-    .catch(error => console.log(error))
-})
-
-//setting routes for delete
-app.post('/restaurants/:id/delete', (req, res) => {
-  const id = req.params.id
-  return Restaurant.findById(id)
-    .then(rest => rest.remove())
-    .then(() => res.redirect('/'))
-    .catch(error => console.log(error))
-})
 
 //Search function
 app.get('/search', (req, res) => {
