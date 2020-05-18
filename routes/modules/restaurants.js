@@ -3,6 +3,7 @@ const express = require('express')
 const router = express.Router()
 //引入restaurant model
 const Restaurant = require('../../models/restaurant')
+
 //設定restaurants路由
 //setting routes for create
 router.get('/new', (req, res) => {
@@ -10,16 +11,6 @@ router.get('/new', (req, res) => {
 })
 //create data in collection
 router.post('/', (req, res) => {
-  // const name = req.body.name
-  // const nameEn = req.body.name_en
-  // const category = req.body.category
-  // const image = req.body.image
-  // const location = req.body.location
-  // const phone = req.body.phone
-  // const googleMap = req.body.google_map
-  // const rating = req.body.rating
-  // const description = req.body.description
-  //參考U88教案內容將以上內容修改成解構賦值的語法
   const { name, name_en, category, image, location, phone, google_map, rating, description } = req.body
   return Restaurant.create({ name, name_en, category, image, location, phone, google_map, rating, description })
     .then(() => res.redirect('/'))
@@ -44,16 +35,6 @@ router.get('/:id/edit', (req, res) => {
 //update documents in collection
 router.put('/:id', (req, res) => {
   const id = req.params.id
-  // const name = req.body.name
-  // const nameEn = req.body.name_en
-  // const category = req.body.category
-  // const image = req.body.image
-  // const location = req.body.location
-  // const phone = req.body.phone
-  // const googleMap = req.body.google_map
-  // const rating = req.body.rating
-  // const description = req.body.description
-  //參考U88教案內容將以上內容修改成解構賦值的語法
   const { name, name_en, category, image, location, phone, google_map, rating, description } = req.body
   return Restaurant.findById(id)
     .then(rest => {
